@@ -1,0 +1,42 @@
+rule C: ¬B→¬A⊢A→B
+rule mp: A,A→B⊢B
+rule S: P[A], P[B], P[C]⊢(A→B→C)→(A→B)→A→C
+rule i: P[A], P[B]⊢P[A→B]
+rule n: P[A]⊢P[¬A]
+rule K: P[A], P[B]⊢A→B→A
+rule b: ⊢P[q]
+
+# ⊢ int(0)
+# int(X) ⊢ int(X+1)
+# int(X) ⊢ var(v(X))
+# all[var(X), P], subs[P, var(X), term(Y), Q] ⊢ Q
+# subs(T1, var(X), term(Y), T3), subs(T1, var(X), term(Y), T3) ⊢ subs[eq(T1, T2), var(X), term(Y), eq(T3, T4)]
+# var(X), term(Y) ⊢ subs(X, var(X), term(Y), Y)
+# var(X), term(Y), const(C) ⊢ subs(C, var(X), term(Y), C)
+# subs(T1, var(X), term(Y), T2) ⊢ subs(s(T1), var(X), term(Y), s(T2))
+# subs(T1, var(X), term(Y), T2), subs(T3, var(X), term(Y), T4) ⊢ subs(T1+T3, var(X), term(Y), T2+T4)
+# subs(T1, var(X), term(Y), T2), subs(T3, var(X), term(Y), T4) ⊢ subs(T1.T3, var(X), term(Y), T2.T4)
+# subs[P, var(X), term(Y), Q] ⊢ subs[¬P, var(X), term(Y), ¬Q]
+# subs[P1, var(X), term(Y), Q1], subs[P2, var(X), term(Y), Q2] ⊢ subs[P1→P2, var(X), term(Y), Q1→Q2]
+
+limited depth demonstration: q→q
+
+manual demonstration: q→q
+apply b 
+apply b 
+apply b
+apply i
+apply b
+apply S
+apply b
+apply b
+apply i
+apply b
+apply K
+apply mp
+apply b
+apply b
+apply K
+apply mp
+end.
+
